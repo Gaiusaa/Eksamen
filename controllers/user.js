@@ -50,8 +50,7 @@ const getUser = async (req, res) => {
     try {
         const usr = await user.findOne({username: username});
         if (!usr) return responderMiddleware.successResponse(res, 204, false, "No users could be found");
-        let u = {username: usr.username, admin: usr.admin};
-        responderMiddleware.successResponse(res, 200, true, "User found", u);
+        responderMiddleware.successResponse(res, 200, true, "User found", usr);
 
     } catch (error) {
         console.log(`Error fetching user: ${error}`);
