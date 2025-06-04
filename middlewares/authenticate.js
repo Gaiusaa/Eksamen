@@ -23,13 +23,13 @@ const noToken = (req, res, next) => {
 
 const signupFields = (req, res, next) => {
     const {username, email, password} = req.body;
-    if (!username || !email || !password || !validator.isEmail(email)) return responderMiddleware.successResponse(res, 401, false, "Missing data for request");
+    if (!username || !email || !password || !validator.isEmail(email)) return responderMiddleware.successResponse(res, 401, false, "Missing data to make user");
     next();
 };
 
 const loginFields = (req, res, next) => {
     const {email, password} = req.body;
-    if (!email || !validator.isEmail(email) || !password) return responderMiddleware.successResponse(res, 401, false, "Missing data for request");
+    if (!email || !validator.isEmail(email) || !password) return responderMiddleware.successResponse(res, 401, false, "Missing data to authenticate user");
     next();
 };
 
@@ -42,7 +42,7 @@ const userField = (req, res, next) => {
 const updateField = (req, res, next) => {
     const {username} = req.params;
     const {data} = req.body;
-    if (!username || !data) return responderMiddleware.successResponse(res, 401, false, "Missing data for request");
+    if (!username || !data) return responderMiddleware.successResponse(res, 401, false, "Missing data to update user");
     next();
 }
 
@@ -64,7 +64,7 @@ const updateCheck = async (req, res, next) => {
 
 const deleteField = (req, res, next) => {
     const {username} = req.params;
-    if (!username) return responderMiddleware.successResponse(res, 401, false, "Missing data for request");
+    if (!username) return responderMiddleware.successResponse(res, 401, false, "Missing data to delete user");
     next();
 };
 
